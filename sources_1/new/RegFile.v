@@ -14,7 +14,7 @@ module RegFile(
     input [4: 0] RegIDToWrite, 
     input EnableWrite,
     input Clock,
-    input Reset,
+    input NReset,
     output [31: 0] QA,
     output [31: 0] QB);
 
@@ -22,7 +22,7 @@ module RegFile(
     wire [31: 0] q[31: 0];
     assign q[0] = 0;
 
-    REGX32 reg32(DataIn, Y, Clock, Reset, 
+    REGX32 reg32(DataIn, Y, Clock, NReset, 
         q[31], q[30], q[29], q[28], q[27], q[26], q[25], q[24], q[23], q[22], q[21], 
         q[20], q[19], q[18], q[17], q[16], q[15], q[14], q[13], q[12], q[11], q[10], 
         q[09], q[08], q[07], q[06], q[05], q[04], q[03], q[02], q[01], q[00]);

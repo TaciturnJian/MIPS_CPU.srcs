@@ -6,31 +6,54 @@ module InstructionMemory(
 
     wire[31:0] rom[31:0];
     assign Instruction = rom[Address[6: 2]];
+    /*
+24010001
+24020002
+24030003
+24040004
+24050005
+24060006
+24070007
+24080008
+24090009
+00432020
+8c440004
+ac450008
+00831022
+00831025
+00831024
+0083102a
+10630001
+8c620000
+10640001
+ac620000
+08100009
+    */
 
-    assign rom[5'h00] = 32'h00432020;           
-    assign rom[5'h01] = 32'h8c440004;           
-    assign rom[5'h02] = 32'hac450008;           
-    assign rom[5'h03] = 32'h00831022;           
-    assign rom[5'h04] = 32'h00831025;           
-    assign rom[5'h05] = 32'h00831024;           
-    assign rom[5'h06] = 32'h0083102a;           
-    assign rom[5'h07] = 32'h10630001;
-    assign rom[5'h08] = 32'h8c620000;
-    assign rom[5'h09] = 32'h10640001;           
-    assign rom[5'h0A] = 32'hac620000;           
-    assign rom[5'h0B] = 32'h08100000;
-    assign rom[5'h0C] = 32'h0;
-    assign rom[5'h0D] = 32'h0;           
-    assign rom[5'h0E] = 32'h0;           
-    assign rom[5'h0F] = 32'h0;           
-    assign rom[5'h10] = 32'h0;           
-    assign rom[5'h11] = 32'h0;           
-    assign rom[5'h12] = 32'h0;           
-    assign rom[5'h13] = 32'h0;           
-    assign rom[5'h14] = 32'h0;           
-    assign rom[5'h15] = 32'h0;           
-    assign rom[5'h16] = 32'h0;           
-    assign rom[5'h17] = 32'h0;           
+    assign rom[5'h0] = 32'h24020008;
+    assign rom[5'h1] = 32'h2403000c;
+    assign rom[5'h2] = 32'hac03000c;
+    assign rom[5'h3] = 32'h24040010;
+    assign rom[5'h4] = 32'h24050014;
+    assign rom[5'h5] = 32'h00432020;
+    assign rom[5'h6] = 32'h8c440004;
+    assign rom[5'h7] = 32'hac450008;
+    assign rom[5'h8] = 32'h00831022;
+    assign rom[5'h9] = 32'h00831025;
+    assign rom[5'hA] = 32'h00831024;
+    assign rom[5'hB] = 32'h0083102a;
+    assign rom[5'hC] = 32'h10630001;
+    assign rom[5'hD] = 32'h8c620000;
+    assign rom[5'hE] = 32'h10640001;
+    assign rom[5'hF] = 32'hac620000;
+    assign rom[5'h10] = 32'h2067000a;
+    assign rom[5'h11] = 32'h34680009;
+    assign rom[5'h12] = 32'h08100005;
+    assign rom[5'h13] = 32'h0;
+    assign rom[5'h14] = 32'h0;
+    assign rom[5'h15] = 32'h0;
+    assign rom[5'h16] = 32'h0;
+    assign rom[5'h17] = 32'h0;
     assign rom[5'h18] = 32'h0;
     assign rom[5'h19] = 32'h0;
     assign rom[5'h1A] = 32'h0;           
