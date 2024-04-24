@@ -10,6 +10,6 @@ module AddSubX32(
 	input  [31: 0] B,
 	input  Sub,
 	output [31: 0] S);
-	wire cout;
-    CLA32 adder(A, B ^ {32{Sub}}, Sub, S, cout);
+	
+    CLA32 adder(A, B ^ {32{Sub}}, Sub, S);
 endmodule

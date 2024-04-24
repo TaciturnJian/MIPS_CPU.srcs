@@ -5,6 +5,7 @@ module MUX2T1X1(
     input A1, 
     input S, 
     output Y);
+    
     wire A0_S, A1_S, S_n;
     not i0(S_n, S);
     nand i1(A0_S, A0, S_n);

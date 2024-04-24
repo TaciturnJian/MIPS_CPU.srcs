@@ -86,8 +86,4 @@ module CPU(input Clock, input NReset);
         address_PC_in
     );
 
-    initial begin
-        
-    end
-
 endmodule

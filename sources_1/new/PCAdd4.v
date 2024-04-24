@@ -1,12 +1,6 @@
 `timescale 1ns / 1ps
 
-/// @brief PC + 4 ×÷ÎªPC¼Ä´æÆ÷µÄ¸üĞÂĞÅºÅ
-module PCAdd4(
-    input [31: 0] PC, 
-    output [31: 0] PCResult);
-
-    reg [31:0] step = 32'h4;
-    reg c0 = 0;
-    wire cout;
-    CLA32 cla(PC, step, c0, PCResult, cout);
+/// @brief PC + 4 ä½œä¸ºPCå¯„å­˜å™¨çš„ä¸‹ä¸€æ­¥ä¿¡å·
+module PCAdd4(input [31: 0] PC, output [31: 0] PCResult);
+    CLA32 calculator(PC, 32'h4, 0, PCResult);
 endmodule

@@ -11,5 +11,6 @@ module MUX2T1X5(
     input [4: 0] A1,
     input S,
     output [4: 0]Y);
+    
     assign Y = S ? A1 : A0;
 endmodule
