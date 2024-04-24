@@ -72,11 +72,10 @@ module CPU(input Clock, input NReset);
     MUX2T1X32 select_data_alu_by_control(data_out_from_memory, alu_result, control_from_reg_to_reg, temp_data_from_memory);
     MUX2T1X32 get_data_to_write(temp_data_from_memory, address_PCAdd4_out, control_jump, data_write);
 
-    wire [31: 0] ex_immediate_offset_result;
-    SHIFTX32 shifter2(ex_immediate, 2, 0, 0, ex_immediate_offset_result);
+    wire [31: 0] address_from_ex_imm = ex_immediate << 2;
 
     wire cla_up_out, locally_jump_address;
-    CLA32 cla(address_PCAdd4_out, ex_immediate_offset_result, 0, locally_jump_address, cla_up_out);
+    CLA32 cla(address_PCAdd4_out, address_from_ex_imm, 0, locally_jump_address, cla_up_out);
 
     wire [31: 0] instruction_shift_result;
     SHIFT26T32 shift_j_address_to_full_address(instruction_j_address, address_PCAdd4_out, instruction_shift_result);

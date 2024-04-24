@@ -20,7 +20,6 @@ module RegFile(
 
     wire [31: 0] Y;
     wire [31: 0] q[31: 0];
-    assign q[0] = 0;
 
     REGX32 reg32(DataIn, Y, Clock, NReset, 
         q[31], q[30], q[29], q[28], q[27], q[26], q[25], q[24], q[23], q[22], q[21], 

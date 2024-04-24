@@ -12,7 +12,11 @@ module DataMemory(
     reg [31:0] ram[0:31];
 
     integer i;
-    initial for (integer i = 32'h00; i < 32'h20; i = i + 1) ram[i] <= i * 4; 
+    initial begin
+        for (i = 32'h00; i < 32'h20; i = i + 1) begin 
+            ram[i] <= i * 4;
+        end
+    end
 
     always @ (posedge Clock) begin
         if (EnableWrite) ram[Address[6:2]] <= DataIn;
