@@ -6,8 +6,8 @@
 
 ## Naming
 
-模块、函数等需要被他人调用的变量 input output 首字母需要大写，可以应用全大写和大驼峰
-内部变量使用小写字母，可以应用全小写和小驼峰
+模块、函数等需要被他人调用的变量 input output 首字母需要大写，可以应用全大写或大驼峰
+内部变量使用小写字母，可以应用全小写或小驼峰
 
 TB 想咋写咋写，反正没人帮我 DEBUG
 
@@ -32,12 +32,17 @@ module CPU(input Clock, input NReset);
     wire [4: 0] instruction_rd = instruction[15: 11];
     wire [25: 0] instruction_j_address = instruction[25: 0];
     
+    wire alu_result_is_zero;
     wire [1: 0] pc_selector;
     wire [3: 0] alu_control;
-    wire control_jump, control_shift, control_from_reg_to_reg, 
+    wire 
+        control_jump, 
+        control_shift, 
+        control_from_reg_to_reg, 
         control_write_register, 
-        control_rt_not_rd, control_rt_not_imm;
-    wire alu_result_is_zero;
+        control_rt_not_rd, 
+        control_rt_not_imm;
+
     ControlUnit get_control_signals(
         instruction_operator, instruction_func, 
         alu_result_is_zero, control_rt_not_rd, control_signed, control_write_register,
@@ -72,10 +77,12 @@ module CPU(input Clock, input NReset);
     MUX2T1X32 select_data_alu_by_control(data_out_from_memory, alu_result, control_from_reg_to_reg, temp_data_from_memory);
     MUX2T1X32 get_data_to_write(temp_data_from_memory, address_PCAdd4_out, control_jump, data_write);
 
-    wire [31: 0] address_from_ex_imm = ex_immediate << 2;
+    wire [31: 0] address_from_ex_imm;
+    ExternImmShifter get_address_from_ex_imm(ex_immediate, Clock, address_from_ex_imm);
 
-    wire cla_up_out, locally_jump_address;
-    CLA32 cla(address_PCAdd4_out, address_from_ex_imm, 0, locally_jump_address, cla_up_out);
+    wire cla_up_out;
+    wire [31: 0] locally_jump_address;
+    CLA32 get_locally_jump_address(address_PCAdd4_out, address_from_ex_imm, 0, locally_jump_address, cla_up_out);
 
     wire [31: 0] instruction_shift_result;
     SHIFT26T32 shift_j_address_to_full_address(instruction_j_address, address_PCAdd4_out, instruction_shift_result);

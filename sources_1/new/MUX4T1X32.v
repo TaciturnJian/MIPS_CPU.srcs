@@ -3,7 +3,7 @@
 /// @brief 32位多路选择器 4选1
 /// @param A0 信号1的32位输入端口
 /// @param A1 信号2的32位输入端口
-/// @param S 选择信号 当为0时选择A0 当为1时选择A1 2时选择A2 3时选择A3
+/// @param S 选择信号 当为0b00时选择A0 当为0b01时选择A1 0b10时选择A2 0b11时选择A3
 /// @param Y 32位输出端口
 /// @testbench MUX4T1X32_TB.v
 module MUX4T1X32(
