@@ -19,7 +19,7 @@ module DataMemory(
     end
 
     always @ (posedge Clock) begin
-        if (EnableWrite) ram[Address[6:2]] <= DataIn;
+        if (EnableWrite) ram[Address[4:0]] <= DataIn;
     end
-    assign DataOut = ram[Address[6:2]];
+    assign DataOut = ram[Address[4:0]];
 endmodule

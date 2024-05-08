@@ -78,7 +78,7 @@ module CPU(input Clock, input NReset);
     MUX2T1X32 get_data_to_write(temp_data_from_memory, address_PCAdd4_out, control_jump, data_write);
 
     wire [31: 0] address_from_ex_imm;
-    ExternImmShifter get_address_from_ex_imm(ex_immediate, Clock, address_from_ex_imm);
+    assign address_from_ex_imm = (address_from_ex_imm << 2);
 
     wire cla_up_out;
     wire [31: 0] locally_jump_address;

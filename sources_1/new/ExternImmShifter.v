@@ -8,8 +8,8 @@ module ExternImmShifter(
     input [31: 0] ExternImm,
     input Clock,
     output reg [31: 0] Result);
-    always @ (posedge Clock) begin
-        Result <= ExternImm << 2;
+    always @ (posedge Clock or ExternImm) begin
+        Result <= (ExternImm << 2);
     end
     initial begin
         Result <= 32'h0;
